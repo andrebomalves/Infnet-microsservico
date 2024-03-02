@@ -1,4 +1,6 @@
 
+using Infnet.Ecommerce.Usuario.Infra.Contexto;
+
 namespace Infnet.Ecommerce.Usuario.API
 {
     public class Program
@@ -14,6 +16,8 @@ namespace Infnet.Ecommerce.Usuario.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddSingleton<IDataContext>( new DataContext(builder.Configuration.GetConnectionString("Default")));
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -22,6 +26,8 @@ namespace Infnet.Ecommerce.Usuario.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.Services.GetService<IDataContext>().Init();
 
             app.UseHttpsRedirection();
 
