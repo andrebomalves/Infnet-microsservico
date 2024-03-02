@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Infnet.Ecommerce.Carrinho.Dominio\Infnet.Ecommerce.Carrinho.Dominio.csproj" />
+  </ItemGroup>
+
 </Project>

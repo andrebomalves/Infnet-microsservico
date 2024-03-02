@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Infnet.Ecommerce.Pagamento.Dominio\Infnet.Ecommerce.Pagamento.Dominio.csproj" />
+  </ItemGroup>
+
 </Project>
