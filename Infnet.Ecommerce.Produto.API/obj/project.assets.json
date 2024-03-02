@@ -88,6 +88,29 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "Infnet.Ecommerce.Produto.Aplicacao/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Infnet.Ecommerce.Produto.Dominio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Infnet.Ecommerce.Produto.Aplicacao.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infnet.Ecommerce.Produto.Aplicacao.dll": {}
+        }
+      },
+      "Infnet.Ecommerce.Produto.Dominio/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Infnet.Ecommerce.Produto.Dominio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infnet.Ecommerce.Produto.Dominio.dll": {}
+        }
       }
     }
   },
@@ -429,10 +452,21 @@
         "swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "Infnet.Ecommerce.Produto.Aplicacao/1.0.0": {
+      "type": "project",
+      "path": "../Infnet.Ecommerce.Produto.Aplicacao/Infnet.Ecommerce.Produto.Aplicacao.csproj",
+      "msbuildProject": "../Infnet.Ecommerce.Produto.Aplicacao/Infnet.Ecommerce.Produto.Aplicacao.csproj"
+    },
+    "Infnet.Ecommerce.Produto.Dominio/1.0.0": {
+      "type": "project",
+      "path": "../Infnet.Ecommerce.Produto.Dominio/Infnet.Ecommerce.Produto.Dominio.csproj",
+      "msbuildProject": "../Infnet.Ecommerce.Produto.Dominio/Infnet.Ecommerce.Produto.Dominio.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Infnet.Ecommerce.Produto.Aplicacao >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
@@ -461,7 +495,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\USER\\Documents\\CodigoFonte\\Infnet\\microsservico\\Infnet-microsservico\\Infnet.Ecommerce.Produto.Aplicacao\\Infnet.Ecommerce.Produto.Aplicacao.csproj": {
+              "projectPath": "C:\\Users\\USER\\Documents\\CodigoFonte\\Infnet\\microsservico\\Infnet-microsservico\\Infnet.Ecommerce.Produto.Aplicacao\\Infnet.Ecommerce.Produto.Aplicacao.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "Infnet.Ecommerce.Carrinho.Dominio/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/Infnet.Ecommerce.Carrinho.Dominio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Infnet.Ecommerce.Carrinho.Dominio.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Infnet.Ecommerce.Carrinho.Dominio/1.0.0": {
+      "type": "project",
+      "path": "../Infnet.Ecommerce.Carrinho.Dominio/Infnet.Ecommerce.Carrinho.Dominio.csproj",
+      "msbuildProject": "../Infnet.Ecommerce.Carrinho.Dominio/Infnet.Ecommerce.Carrinho.Dominio.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "Infnet.Ecommerce.Carrinho.Dominio >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\USER\\.nuget\\packages\\": {}
@@ -32,7 +51,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\USER\\Documents\\CodigoFonte\\Infnet\\microsservico\\Infnet-microsservico\\Infnet.Ecommerce.Carrinho.Dominio\\Infnet.Ecommerce.Carrinho.Dominio.csproj": {
+              "projectPath": "C:\\Users\\USER\\Documents\\CodigoFonte\\Infnet\\microsservico\\Infnet-microsservico\\Infnet.Ecommerce.Carrinho.Dominio\\Infnet.Ecommerce.Carrinho.Dominio.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

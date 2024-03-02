@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Infnet.Ecommerce.Pagamento.Infra")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+951af5cf5c195014713245201221e86b84783143")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1513ba8323766c17b3b159c3e585513f6aa44484")]
 [assembly: System.Reflection.AssemblyProductAttribute("Infnet.Ecommerce.Pagamento.Infra")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Infnet.Ecommerce.Pagamento.Infra")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
