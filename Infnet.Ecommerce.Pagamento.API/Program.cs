@@ -1,4 +1,6 @@
 
+using Infnet.Ecommerce.Pagamento.API.Jobs;
+
 namespace Infnet.Ecommerce.Pagamento.API
 {
     public class Program
@@ -13,6 +15,9 @@ namespace Infnet.Ecommerce.Pagamento.API
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            // https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-8.0&tabs=visual-studio
+            builder.Services.AddHostedService<TesteBackground>();
 
             var app = builder.Build();
 

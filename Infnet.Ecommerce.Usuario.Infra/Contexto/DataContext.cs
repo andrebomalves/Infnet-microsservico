@@ -1,5 +1,4 @@
 ﻿using System;
-
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -18,23 +17,24 @@ namespace Infnet.Ecommerce.Usuario.Infra.Contexto
         {
             connection = new SqliteConnection(connectionString);
         }
+        
+        public IDbConnection GetDbConnection()
+        {
+            return this.connection;
+        }
 
         public void Init()
         {
             var parametros = new DynamicParameters();
 
-            var sql = """
+            var sql = @"
             CREATE TABLE IF NOT EXISTS 
-            Users (
-                Id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-                Title TEXT,
-                FirstName TEXT,
-                LastName TEXT,
-                Email TEXT,
-                Role INTEGER,
-                PasswordHash TEXT
+            Usuarios (
+                UsuarioId TEXT NOT NULL PRIMARY KEY,
+                Nome TEXT,
+                Email TEXT
                 );
-            """;
+            ";
             connection.Execute(sql);
         }
     }
