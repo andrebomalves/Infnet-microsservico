@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "dgSpecHash": "+pTzm/YWf5mmEcJGGXg0XS03V2Xw94fZora2AK23nPPcEqt8AZBNOqOH7wXY18nVuu66vn74H6EjSiV63zIXJg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\USER\\Documents\\CodigoFonte\\Infnet\\microsservico\\Infnet-microsservico\\Infnet.Ecommerce.Usuario.API\\Infnet.Ecommerce.Usuario.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Infnet.Ecommerce.Usuario.API depende de Swashbuckle.AspNetCore (>= 6.4.0), mas Swashbuckle.AspNetCore 6.4.0 não foi encontrado. A melhor correspondência aproximada de Swashbuckle.AspNetCore 6.5.0 foi resolvida.",
+      "libraryId": "Swashbuckle.AspNetCore",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
+}
