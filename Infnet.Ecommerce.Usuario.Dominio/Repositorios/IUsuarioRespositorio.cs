@@ -10,7 +10,7 @@ namespace Infnet.Ecommerce.Usuario.Dominio.Repositorios
     public interface IUsuarioRespositorio
     {
         Entidades.Usuario ObterPorId(Guid usuarioId);
-        void salvar(Entidades.Usuario usuario);
+        void Salvar(Entidades.Usuario usuario);
         IEnumerable<Entidades.Usuario> ObterTodos();
 
     }

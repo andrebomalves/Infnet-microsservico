@@ -8,7 +8,7 @@ namespace Infnet.Ecommerce.Usuario.Dominio.Entidades
 {
     public class Usuario
     {
-		private Guid usuarioId;
+		private Guid? usuarioId;
 
         public Usuario()
         {
@@ -20,16 +20,16 @@ namespace Infnet.Ecommerce.Usuario.Dominio.Entidades
             this.UsuarioId = Guid.NewGuid();
         }
 
-        public Usuario(Guid usuarioId, string nome, string email)
+        public Usuario(Guid? usuarioId, string nome, string email)
         {
             this.UsuarioId=usuarioId;
             this.Nome=nome;
             this.Email=email;
         }
-        public Guid UsuarioId
+        public Guid? UsuarioId
 		{
 			get { return usuarioId; }
-			set { usuarioId = value; }
+			set { usuarioId = string.IsNullOrEmpty(value.ToString()) ? Guid.NewGuid() : value ; }
 		}
 
         private string email;
@@ -48,7 +48,10 @@ namespace Infnet.Ecommerce.Usuario.Dominio.Entidades
             set { nome = value; }
         }
 
-
-
+        public string UsuarioIdString
+        {
+            set { this.UsuarioId = Guid.Parse(value); }
+            get { return this.UsuarioId.ToString(); }
+        }
     }
 }
