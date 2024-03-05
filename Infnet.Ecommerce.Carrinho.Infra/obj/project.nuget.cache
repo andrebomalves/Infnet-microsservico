@@ -1,8 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "RGL373/xbvcD6bhS24pw1knn8nLdqgIz6f6J8jkhKmawf6XnAkp6mo7vpQ8IJ8cN1FGDQZVTJo7lX8gUbH8/rA==",
+  "dgSpecHash": "nISDQBt3BwzPzSatdOySMaHnKgvRZ5vtG8pShjkci2CNwNXfLTiCUlvoz+Uv9pPlHpt6xi52aVDXMMbthIUIGQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\USER\\Documents\\CodigoFonte\\Infnet\\microsservico\\Infnet-microsservico\\Infnet.Ecommerce.Carrinho.Infra\\Infnet.Ecommerce.Carrinho.Infra.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\dapper\\2.1.28\\dapper.2.1.28.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.data.sqlite\\8.0.2\\microsoft.data.sqlite.8.0.2.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.2\\microsoft.data.sqlite.core.8.0.2.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.6\\sqlitepclraw.bundle_e_sqlite3.2.1.6.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\sqlitepclraw.core\\2.1.6\\sqlitepclraw.core.2.1.6.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.6\\sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.6\\sqlitepclraw.provider.e_sqlite3.2.1.6.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+  ],
   "logs": []
 }

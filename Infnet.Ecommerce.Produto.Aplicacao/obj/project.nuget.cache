@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "q4+Hs55DgndiyxkdP5uAT31B8H6j0Nk0Ez9yhIfCFKXa0GkwBPUfICTfU9icL8+bz97+agUyCDo6ZeqpJW9ZcA==",
+  "dgSpecHash": "UR4bb0Ur0kDWFpmQTQJyel765UNRqDHRxYwdI4Atr+IJjtxy5p6ZN5qhbhxYg6IntrzxvFsirAp3z6TTG7xPjw==",
   "success": true,
   "projectFilePath": "C:\\Users\\USER\\Documents\\CodigoFonte\\Infnet\\microsservico\\Infnet-microsservico\\Infnet.Ecommerce.Produto.Aplicacao\\Infnet.Ecommerce.Produto.Aplicacao.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.0\\microsoft.extensions.logging.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
