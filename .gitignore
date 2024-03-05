@@ -483,18 +483,5 @@ $RECYCLE.BIN/
 # Vim temporary swap files
 *.swp
 
-
-# Ignorar arquivos de compilação da API Carrinho
-*/Infnet.Ecommerce.Carrinho.API/obj/*
-
-# Ignorar arquivos de compilação da API Pagamento
-*/Infnet.Ecommerce.Pagamento.API/obj/*
-
-# Ignorar arquivos de compilação da API Produto
-*/Infnet.Ecommerce.Produto.API/obj/*
-
-# Ignorar arquivos de compilação da API Usuário
-*/Infnet.Ecommerce.Usuario.API/obj/*
-
 # Ignorar arquivos do sqlite
 *.db
