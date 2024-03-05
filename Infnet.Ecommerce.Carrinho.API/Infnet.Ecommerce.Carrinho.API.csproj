@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Infnet.Ecommerce.Carrinho.Aplicacao\Infnet.Ecommerce.Carrinho.Aplicacao.csproj" />
+    <ProjectReference Include="..\Infnet.Ecommerce.Carrinho.Infra\Infnet.Ecommerce.Carrinho.Infra.csproj" />
   </ItemGroup>
 
 </Project>
