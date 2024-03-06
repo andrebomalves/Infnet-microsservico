@@ -24,7 +24,7 @@ namespace Infnet.Ecommerce.Produto.Infra.Repositorios
 
             string sql = @"select produtoid, nome, descricao, valor from produtos where produtoId = @produtoId;";
 
-            return connection.QueryFirst<Dominio.Entidades.Produto>(sql, parans);
+            return connection.QueryFirstOrDefault<Dominio.Entidades.Produto>(sql, parans);
         }
 
         public IEnumerable<Dominio.Entidades.Produto> ObterTodos()
@@ -38,13 +38,12 @@ namespace Infnet.Ecommerce.Produto.Infra.Repositorios
         {
             StringBuilder sql = new StringBuilder();
             sql.Append("insert into produtos ");
-            sql.Append("(produtoid, nome, descricao, valor) ");
-            sql.Append("values (@produtoid, @nome, @descricao, @valor); ");
+            sql.Append("( nome, descricao, valor) ");
+            sql.Append("values ( @nome, @descricao, @valor); ");
 
             var parametros = new DynamicParameters();
 
-            parametros.Add("@produtoid", produto.ProdutoId);
-            parametros.Add(" @nome", produto.Nome);
+            parametros.Add("@nome", produto.Nome);
             parametros.Add("@descricao", produto.Descricao);
             parametros.Add("@valor", produto.Valor);
 

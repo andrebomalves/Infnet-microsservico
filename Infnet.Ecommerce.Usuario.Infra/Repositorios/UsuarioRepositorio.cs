@@ -23,7 +23,7 @@ namespace Infnet.Ecommerce.Usuario.Infra.Repositorios
 
             string sql = @"select usuarioId as UsuarioIdString, nome, email from usuarios where usuarioId = @usuarioId;";
 
-            return connection.QueryFirst<Dominio.Entidades.Usuario>(sql, parans);
+            return connection.QueryFirstOrDefault<Dominio.Entidades.Usuario>(sql, parans);
         }
 
         public IEnumerable<Dominio.Entidades.Usuario> ObterTodos()

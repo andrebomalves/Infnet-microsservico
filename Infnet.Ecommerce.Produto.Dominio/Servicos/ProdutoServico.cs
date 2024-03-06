@@ -18,7 +18,13 @@ namespace Infnet.Ecommerce.Produto.Dominio.Servicos
         }
         public Entidades.Produto ObterPorId(int produtoId)
         {
-            return produtoRepositorio.ObterPorId(produtoId);
+
+            var produto = produtoRepositorio.ObterPorId(produtoId);
+
+            if (produto == null)
+                throw new Exception("Não foi possivel localicar o produto informado.");
+
+            return produto;
         }
 
         public IEnumerable<Entidades.Produto> ObterTodos()

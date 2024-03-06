@@ -28,7 +28,7 @@ namespace Infnet.Ecommerce.Produto.Infra.Contexto
                 ProdutoId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                 Nome TEXT,
                 Descricao TEXT,
-                Valor NUMERIC
+                Valor REAL
                 );
             ";
             connection.Execute(sql);

@@ -34,10 +34,10 @@ namespace Infnet.Ecommerce.Produto.API.Controllers
             return Ok(produtos);
         }
 
-        [HttpGet("{usuarioId}")]
+        [HttpGet("{produtoId}")]
         public ActionResult<ProdutoResponse> RecuperarPorId([FromRoute] int produtoId)
         {
-            if (produtoId > 0)
+            if (produtoId <= 0)
                 return BadRequest();
 
             var produto = produtoAppServico.ListarPorId(produtoId);
