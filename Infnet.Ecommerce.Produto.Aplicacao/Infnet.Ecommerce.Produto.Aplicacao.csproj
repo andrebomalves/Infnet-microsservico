@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Infnet.Ecommerce.Produto.Dominio\Infnet.Ecommerce.Produto.Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Produto\Profiles\" />
+  </ItemGroup>
+
 </Project>

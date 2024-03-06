@@ -1,4 +1,8 @@
 
+using Infnet.Ecommerce.Produto.Aplicacao.Produto.Interfaces;
+using Infnet.Ecommerce.Produto.Dominio.Repositorios;
+using Infnet.Ecommerce.Produto.Dominio.Servicos;
+using Infnet.Ecommerce.Produto.Dominio.Servicos.Interfaces;
 using Infnet.Ecommerce.Produto.Infra.Contexto;
 
 namespace Infnet.Ecommerce.Produto.API
@@ -18,11 +22,11 @@ namespace Infnet.Ecommerce.Produto.API
 
             builder.Services.AddSingleton<IDataContext>(new DataContext(builder.Configuration.GetConnectionString("Default")));
 
-            /*builder.Services.AddAutoMapper(typeof(Infnet.Ecommerce.Usuario.Aplicacao.Usuario.Profiles.UsuarioProfile));
+            builder.Services.AddAutoMapper(typeof(Infnet.Ecommerce.Produto.Aplicacao.Produto.Profiles.UsuarioProfile));
 
-            builder.Services.AddScoped<IUsuarioRespositorio, Infra.Repositorios.UsuarioRepositorio>();
-            builder.Services.AddScoped<IUsuarioServico, UsuarioServico>();
-            builder.Services.AddScoped<IUsuarioAppServico, Aplicacao.Usuario.UsuarioAppServico>(); */
+            builder.Services.AddScoped<IProdutoRepositorio, Infra.Repositorios.ProdutoRepositorio>();
+            builder.Services.AddScoped<IProdutoServico, ProdutoServico>();
+            builder.Services.AddScoped<IProdutoAppServico, Aplicacao.Produto.ProdutoAppServico>(); 
 
             var app = builder.Build();
 

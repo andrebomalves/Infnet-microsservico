@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Infnet.Ecommerce.Produto.Infra")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+190241f75e9e99ec0c1f5ed43152e0d9ca5e509c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb23538a1671b136fee05ca9293e63485767ddc9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Infnet.Ecommerce.Produto.Infra")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Infnet.Ecommerce.Produto.Infra")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
