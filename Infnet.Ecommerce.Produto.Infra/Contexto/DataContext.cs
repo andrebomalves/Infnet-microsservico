@@ -24,10 +24,11 @@ namespace Infnet.Ecommerce.Produto.Infra.Contexto
 
             var sql = @"
             CREATE TABLE IF NOT EXISTS 
-            Usuarios (
-                UsuarioId TEXT NOT NULL PRIMARY KEY,
+            Produtos (
+                ProdutoId INTEGER NOT NULL PRIMARY KEY,
                 Nome TEXT,
-                Email TEXT
+                Descricao TEXT,
+                Valor NUMERIC
                 );
             ";
             connection.Execute(sql);
