@@ -1,4 +1,6 @@
 
+using Infnet.Ecommerce.Carrinho.Infra.Contexto;
+
 namespace Infnet.Ecommerce.Carrinho.API
 {
     public class Program
@@ -14,6 +16,14 @@ namespace Infnet.Ecommerce.Carrinho.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddSingleton<IDataContext>(new DataContext(builder.Configuration.GetConnectionString("Default")));
+
+            /*builder.Services.AddAutoMapper(typeof(Infnet.Ecommerce.Usuario.Aplicacao.Usuario.Profiles.UsuarioProfile));
+
+            builder.Services.AddScoped<IUsuarioRespositorio, Infra.Repositorios.UsuarioRepositorio>();
+            builder.Services.AddScoped<IUsuarioServico, UsuarioServico>();
+            builder.Services.AddScoped<IUsuarioAppServico, Aplicacao.Usuario.UsuarioAppServico>(); */
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -22,6 +32,8 @@ namespace Infnet.Ecommerce.Carrinho.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.Services.GetService<IDataContext>().Init();
 
             app.UseHttpsRedirection();
 

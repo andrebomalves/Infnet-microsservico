@@ -1,5 +1,6 @@
 
 using Infnet.Ecommerce.Pagamento.API.Jobs;
+using Infnet.Ecommerce.Pagamento.Infra.Contexto;
 
 namespace Infnet.Ecommerce.Pagamento.API
 {
@@ -16,8 +17,18 @@ namespace Infnet.Ecommerce.Pagamento.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddSingleton<IDataContext>(new DataContext(builder.Configuration.GetConnectionString("Default")));
+
+            /*builder.Services.AddAutoMapper(typeof(Infnet.Ecommerce.Usuario.Aplicacao.Usuario.Profiles.UsuarioProfile));
+
+            builder.Services.AddScoped<IUsuarioRespositorio, Infra.Repositorios.UsuarioRepositorio>();
+            builder.Services.AddScoped<IUsuarioServico, UsuarioServico>();
+            builder.Services.AddScoped<IUsuarioAppServico, Aplicacao.Usuario.UsuarioAppServico>(); */
+
             // https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-8.0&tabs=visual-studio
             builder.Services.AddHostedService<TesteBackground>();
+
+
 
             var app = builder.Build();
 
@@ -27,6 +38,8 @@ namespace Infnet.Ecommerce.Pagamento.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.Services.GetService<IDataContext>().Init();
 
             app.UseHttpsRedirection();
 
