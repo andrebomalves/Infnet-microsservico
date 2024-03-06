@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Infnet.Ecommerce.Produto.Dominio.Servicos.Interfaces
 {
-    public interface IProdutoInterface
+    public interface IProdutoServico
     {
-        public void Salvar(Dominio.Entidades.Produto usuario);
-        public Dominio.Entidades.Produto ObterPorId(string usuarioId);
+        public void Salvar(Dominio.Entidades.Produto produtoId);
+        public Dominio.Entidades.Produto ObterPorId(int produto);
         public IEnumerable<Dominio.Entidades.Produto> ObterTodos();
     }
 }
