@@ -22,7 +22,7 @@ namespace Infnet.Ecommerce.Produto.API
 
             builder.Services.AddSingleton<IDataContext>(new DataContext(builder.Configuration.GetConnectionString("Default")));
 
-            builder.Services.AddAutoMapper(typeof(Infnet.Ecommerce.Produto.Aplicacao.Produto.Profiles.UsuarioProfile));
+            builder.Services.AddAutoMapper(typeof(Infnet.Ecommerce.Produto.Aplicacao.Produto.Profiles.ProdutoProfile));
 
             builder.Services.AddScoped<IProdutoRepositorio, Infra.Repositorios.ProdutoRepositorio>();
             builder.Services.AddScoped<IProdutoServico, ProdutoServico>();

@@ -25,7 +25,7 @@ namespace Infnet.Ecommerce.Produto.Infra.Contexto
             var sql = @"
             CREATE TABLE IF NOT EXISTS 
             Produtos (
-                ProdutoId INTEGER NOT NULL PRIMARY KEY,
+                ProdutoId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
                 Nome TEXT,
                 Descricao TEXT,
                 Valor NUMERIC
