@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Infnet.Ecommerce.Carrinho.Dominio")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+63309907d9d4944e7b2ba2c8d4015f8bb836c6c3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+98c6368cf7f0aa4418ee60b1f30dd877bd974094")]
 [assembly: System.Reflection.AssemblyProductAttribute("Infnet.Ecommerce.Carrinho.Dominio")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Infnet.Ecommerce.Carrinho.Dominio")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

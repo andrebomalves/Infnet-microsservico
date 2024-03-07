@@ -24,10 +24,20 @@ namespace Infnet.Ecommerce.Carrinho.Infra.Contexto
 
             var sql = @"
             CREATE TABLE IF NOT EXISTS 
-            Usuarios (
-                UsuarioId TEXT NOT NULL PRIMARY KEY,
+            Cestas (
+                CestaId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                UsuarioId TEXT,
+                Status TEXT
+                );
+
+            CREATE TABLE IF NOT EXISTS 
+            ItensCesta (
+                ItemCestaId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                CestaId INTEGER, 
+                ProdutoId INTEGER,
                 Nome TEXT,
-                Email TEXT
+                PrecoUnitario REAL,
+                Quantidade INTEGER
                 );
             ";
             connection.Execute(sql);
