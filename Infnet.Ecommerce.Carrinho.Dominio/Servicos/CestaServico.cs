@@ -28,11 +28,11 @@ namespace Infnet.Ecommerce.Carrinho.Dominio.Servicos
             cestaRepositorio.CriarCesta(cesta);
         }
 
-        public Cesta RecuperarCestaPorUsuario(int usuarioId)
+        public Cesta RecuperarCestaAbertaPorUsuario(string usuarioId)
         {
             //TODO: fazer a validação do usuário antes
 
-            return cestaRepositorio.RecuperarCestaPorUsuario(usuarioId); 
+            return cestaRepositorio.RecuperarCestaAbertaPorUsuario(usuarioId); 
         }
 
         public int RemoverItemCesta(int itemCestaId)
