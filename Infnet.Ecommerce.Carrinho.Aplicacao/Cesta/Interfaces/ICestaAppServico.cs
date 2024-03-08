@@ -17,5 +17,7 @@ namespace Infnet.Ecommerce.Carrinho.Aplicacao.Cesta.Interfaces
         CestaResponse RecuperarCestaAbertaPorUsuario(string usuarioId);
 
         int AtualizarStatusCesta(int cestaId, string status);
+
+        void RegistrarPagamento(int cestaId, PagamentoRequest pagamentoRequest);
     }
 }

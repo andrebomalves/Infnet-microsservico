@@ -53,5 +53,13 @@ namespace Infnet.Ecommerce.Carrinho.API.Controllers
 
             return Ok();
         }
+
+        [HttpPost("{cestaId}/pagamento")]
+        public ActionResult RegistrarPagamento([FromRoute] int cestaId, [FromBody] PagamentoRequest pagamentoRequest) {
+
+
+
+            return Ok();
+        }
     }
 }

@@ -82,6 +82,31 @@ namespace Infnet.Ecommerce.Carrinho.Infra.Repositorios
             return cesta;
         }
 
+        public Cesta RecuperarCestaAbertaPorId(int cestaId)
+        {
+            Cesta cesta;
+            StringBuilder sqlCesta = new StringBuilder();
+            sqlCesta.Append("select CestaId, UsuarioId, Status ");
+            sqlCesta.Append("from Cestas ");
+            sqlCesta.Append("where Status = 'Aberta' and CestaId = @cestaId ");
+
+            cesta = connection.QueryFirstOrDefault<Cesta>(sqlCesta.ToString(), new { cestaId = cestaId });
+
+            if (cesta != null)
+            {
+                StringBuilder sqlItens = new StringBuilder();
+                sqlItens.Append("select ItemCestaId, CestaId, ProdutoId, Nome, PrecoUnitario, Quantidade ");
+                sqlItens.Append("from ItensCesta ");
+                sqlItens.Append("where CestaId = @cestaId ");
+
+                var itens = connection.Query<ItemCesta>(sqlItens.ToString(), new { cestaId = cestaId });
+
+                cesta.Itens.AddRange(itens);
+            }
+
+            return cesta;
+        }
+
         public int RemoverItemCesta(int itemCestaId)
         {
             string sql = @"delete from ItensCesta where itemCestaId = @itemCestaId";

@@ -1,4 +1,5 @@
 
+using EasyNetQ;
 using Infnet.Ecommerce.Carrinho.Aplicacao.Cesta.Interfaces;
 using Infnet.Ecommerce.Carrinho.Dominio.Repositorios;
 using Infnet.Ecommerce.Carrinho.Dominio.Servicos;
@@ -24,6 +25,8 @@ namespace Infnet.Ecommerce.Carrinho.API
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddSingleton<IDataContext>(new DataContext(builder.Configuration.GetConnectionString("Default")));
+
+            builder.Services.AddSingleton<IBus>( RabbitHutch.CreateBus("host=localhost;port=5672;username=guest;password=guest;"));
 
             builder.Services.AddAutoMapper(typeof(Infnet.Ecommerce.Carrinho.Aplicacao.Cesta.Profiles.ItemCestaProfile));
 

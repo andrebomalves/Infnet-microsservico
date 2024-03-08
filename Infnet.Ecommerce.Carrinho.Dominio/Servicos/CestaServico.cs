@@ -37,6 +37,11 @@ namespace Infnet.Ecommerce.Carrinho.Dominio.Servicos
             return cestaRepositorio.RecuperarCestaAbertaPorUsuario(usuarioId); 
         }
 
+        public Cesta RecuperarCestaAbertaPorId(int cestaId)
+        {
+            return cestaRepositorio.RecuperarCestaAbertaPorId(cestaId);
+        }
+
         public int RemoverItemCesta(int itemCestaId)
         {
             return cestaRepositorio.RemoverItemCesta(itemCestaId);
