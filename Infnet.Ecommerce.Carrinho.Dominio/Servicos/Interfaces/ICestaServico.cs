@@ -15,5 +15,7 @@ namespace Infnet.Ecommerce.Carrinho.Dominio.Servicos.Interfaces
         int RemoverItemCesta(int itemCestaId);
 
         Cesta RecuperarCestaAbertaPorUsuario(string usuarioId);
+
+        int AtualizarStatusCesta(int cestaId, StatusCesta status);
     }
 }

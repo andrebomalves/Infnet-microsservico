@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Infnet.Ecommerce.Carrinho.Aplicacao.Cesta.DTO;
 using Infnet.Ecommerce.Carrinho.Aplicacao.Cesta.Interfaces;
+using Infnet.Ecommerce.Carrinho.Dominio.Entidades;
+using Infnet.Ecommerce.Carrinho.Dominio.Repositorios;
 using Infnet.Ecommerce.Carrinho.Dominio.Servicos.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
@@ -14,67 +16,105 @@ namespace Infnet.Ecommerce.Carrinho.Aplicacao.Cesta
     public class CestaAppServico : ICestaAppServico
     {
         private readonly ICestaServico cestaServico;
+        private readonly IProdutoRepositorio produtoRepositorio;
+        private readonly IUsuarioRepositorio usuarioRepositorio;
         private readonly ILogger<CestaAppServico> logger;
         private readonly IMapper mapper;
 
-        public CestaAppServico(ICestaServico cestaServico, ILogger<CestaAppServico> logger, IMapper mapper)
+        public CestaAppServico(ICestaServico cestaServico, IProdutoRepositorio produtoRepositorio, IUsuarioRepositorio usuarioRepositorio, ILogger<CestaAppServico> logger, IMapper mapper)
         {
             this.cestaServico = cestaServico;
+            this.produtoRepositorio = produtoRepositorio;
+            this.usuarioRepositorio = usuarioRepositorio;
             this.logger = logger;
             this.mapper = mapper;
         }
-        public void AdicionarItemCesta(int cestaId, ItemCestaRequest itemCestaRequest)
+        public void AdicionarItemCesta(ItemCestaRequest itemCestaRequest)
         {
             try
             {
+                ItemCesta item = mapper.Map<ItemCesta>(itemCestaRequest);
 
+                var produto = produtoRepositorio.RecuperarProduto(itemCestaRequest.ProdutoId);
+                var usuario = usuarioRepositorio.RecuperaUsuario(itemCestaRequest.UsuarioId);
+
+                if (usuario == null)
+                    throw new Exception("Usuario informado é invalido");
+
+                if (produto == null)
+                    throw new Exception("Produto informado é invalido");
+
+                item.PrecoUnitario = produto.Valor;
+                item.Nome = produto.Nome;
+
+                cestaServico.AdicionarItemCesta(itemCestaRequest.CestaId,item);
             }
             catch (Exception ex )
             {
-
+                logger.LogError("Erro ao inserir produto {produtoId} a cesta {cestaId}",itemCestaRequest.ProdutoId, itemCestaRequest.CestaId);
                 throw;
             }
         }
 
-        public void CriarCesta(CestaRequest cestaRequest)
+        public int AtualizarStatusCesta(int cestaId, string status)
         {
+            int quantidadeResgistrosAtualizados = 0;
             try
             {
-
+                StatusCesta statusCesta = mapper.Map<StatusCesta>(status);
+                cestaServico.AtualizarStatusCesta(cestaId, statusCesta);
             }
             catch (Exception ex)
             {
-
+                logger.LogError("Erro ao atualizar status da venda");
                 throw;
             }
+            return quantidadeResgistrosAtualizados;
         }
 
-        public Dominio.Entidades.Cesta RecuperarCestaAbertaPorUsuario(string usuarioId)
+        public CestaResponse RecuperarCestaAbertaPorUsuario(string usuarioId)
         {
+            Dominio.Entidades.Cesta cesta = null;
+            CestaResponse response = null;
             try
             {
+                var usuario = usuarioRepositorio.RecuperaUsuario(usuarioId);
+                if (usuario == null)
+                    throw new Exception("Usuario informado é invalido");
+
+                cesta = cestaServico.RecuperarCestaAbertaPorUsuario(usuarioId);
+
+                if(cesta == null)
+                {
+                    cesta = new Dominio.Entidades.Cesta(usuarioId);
+                    cestaServico.CriarCesta(cesta);
+                    cesta = cestaServico.RecuperarCestaAbertaPorUsuario(usuarioId);
+                }
+
+                response = mapper.Map<CestaResponse>(cesta);
 
             }
             catch (Exception ex)
             {
-
+                logger.LogError("Erro ao recuperar cesta do usuario.");
                 throw;
             }
-            return new Dominio.Entidades.Cesta(usuarioId);
+            return response;
         }
 
         public int RemoverItemCesta(int itemCestaId)
         {
+            int quantidadeItensRemovidos = 0;
             try
             {
-
+                cestaServico.RemoverItemCesta(itemCestaId);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
+                logger.LogError("Erro ao remover item da cesta.");
                 throw;
             }
-            return 0;
+            return quantidadeItensRemovidos;
         }
     }
 }

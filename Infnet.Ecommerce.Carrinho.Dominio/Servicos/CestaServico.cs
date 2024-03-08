@@ -19,8 +19,12 @@ namespace Infnet.Ecommerce.Carrinho.Dominio.Servicos
         }
         public void AdicionarItemCesta(int cestaId, ItemCesta itemCesta)
         {
-            //TODO:Validar produtos antes
             cestaRepositorio.AdicionarItemCesta(cestaId, itemCesta);
+        }
+
+        public int AtualizarStatusCesta(int cestaId, StatusCesta status)
+        {
+            return cestaRepositorio.AtualizarStatusCesta(cestaId, status);
         }
 
         public void CriarCesta(Cesta cesta)
@@ -30,8 +34,6 @@ namespace Infnet.Ecommerce.Carrinho.Dominio.Servicos
 
         public Cesta RecuperarCestaAbertaPorUsuario(string usuarioId)
         {
-            //TODO: fazer a validação do usuário antes
-
             return cestaRepositorio.RecuperarCestaAbertaPorUsuario(usuarioId); 
         }
 

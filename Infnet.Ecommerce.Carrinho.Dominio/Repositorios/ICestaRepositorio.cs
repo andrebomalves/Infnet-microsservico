@@ -16,5 +16,7 @@ namespace Infnet.Ecommerce.Carrinho.Dominio.Repositorios
 
         Cesta RecuperarCestaAbertaPorUsuario(string usuarioId);
 
+        int AtualizarStatusCesta(int cestaId, StatusCesta status);
+
     }
 }

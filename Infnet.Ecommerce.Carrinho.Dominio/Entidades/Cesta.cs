@@ -8,6 +8,20 @@ namespace Infnet.Ecommerce.Carrinho.Dominio.Entidades
 {
     public class Cesta
     {
+        public Cesta(Int64 cestaId, string usuarioId, string status)
+        {
+            var cestaIdTemp = 0;
+            int.TryParse(cestaId.ToString(), out cestaIdTemp);
+            this.CestaId  = cestaIdTemp;
+
+            this.UsuarioId = usuarioId;
+            
+            var statusTemp = StatusCesta.Aberta;
+            Enum.TryParse<StatusCesta>( status, out statusTemp);
+            this.Status = statusTemp;
+
+            this.Itens = new List<ItemCesta>();
+        }
         public Cesta(string usuarioId)
         {
             Itens = new List<ItemCesta>();
@@ -31,7 +45,7 @@ namespace Infnet.Ecommerce.Carrinho.Dominio.Entidades
         
     }
 
-    //Value Object da CestaCompra
+    //Value Object da Cesta
     public class ItemCesta
     {
         public int ItemCestaId { get; set; }
@@ -52,7 +66,7 @@ namespace Infnet.Ecommerce.Carrinho.Dominio.Entidades
     public enum StatusCesta
     {
         Aberta = 0,
-        AguardandoPgamento,
+        AguardandoPagamento,
         Fechada
     }
 }

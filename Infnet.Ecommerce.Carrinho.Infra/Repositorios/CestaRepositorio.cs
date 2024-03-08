@@ -35,12 +35,11 @@ namespace Infnet.Ecommerce.Carrinho.Infra.Repositorios
         public void CriarCesta(Cesta cesta)
         {
             int cestaId;
-            var transation = connection.BeginTransaction();
             string sql = @"
                         insert into Cestas (UsuarioId, Status) values (@usuarioId, @status);  
                         select last_insert_rowid();";
 
-            cestaId = connection.ExecuteScalar<int>(sql, new { usuarioId = cesta.UsuarioId, status = cesta.Status.ToString() }, transation);
+            cestaId = connection.ExecuteScalar<int>(sql, new { usuarioId = cesta.UsuarioId, status = cesta.Status.ToString() });
 
             if (cestaId != 0 && cesta.Itens.Any())
             {
@@ -53,19 +52,18 @@ namespace Infnet.Ecommerce.Carrinho.Infra.Repositorios
                 cesta.Itens.ForEach(i =>
                 {
                     connection.Execute(sqlItem.ToString(),
-                                        new { cestaId = cestaId, produtoId = i.ProdutoId, nome = i.Nome, precoUnitario = i.PrecoUnitario, quantidade = i.Quantidade },
-                                        transation);
+                                        new { cestaId = cestaId, produtoId = i.ProdutoId, nome = i.Nome, precoUnitario = i.PrecoUnitario, quantidade = i.Quantidade });
                 });
             }
         }
 
-        public Cesta RecuperarCestaPorUsuario(int usuarioId)
+        public Cesta RecuperarCestaAbertaPorUsuario(string usuarioId)
         {
             Cesta cesta;
             StringBuilder sqlCesta = new StringBuilder();
             sqlCesta.Append("select CestaId, UsuarioId, Status ");
-            sqlCesta.Append("from Cestas");
-            sqlCesta.Append("where Status = 'Aberto' and UsuarioId = @usuarioId ");
+            sqlCesta.Append("from Cestas ");
+            sqlCesta.Append("where Status = 'Aberta' and UsuarioId = @usuarioId ");
 
             cesta = connection.QueryFirstOrDefault<Cesta>(sqlCesta.ToString(), new { usuarioId = usuarioId });
 
@@ -73,8 +71,9 @@ namespace Infnet.Ecommerce.Carrinho.Infra.Repositorios
             {
                 StringBuilder sqlItens = new StringBuilder();
                 sqlItens.Append("select ItemCestaId, CestaId, ProdutoId, Nome, PrecoUnitario, Quantidade ");
-                sqlItens.Append("from ItensCesta");
+                sqlItens.Append("from ItensCesta ");
                 sqlItens.Append("where CestaId = @cestaId ");
+
                 var itens = connection.Query<ItemCesta>(sqlItens.ToString(), new {cestaId = cesta.CestaId});
 
                 cesta.Itens.AddRange(itens);
@@ -88,6 +87,14 @@ namespace Infnet.Ecommerce.Carrinho.Infra.Repositorios
             string sql = @"delete from ItensCesta where itemCestaId = @itemCestaId";
             var quantidaDeLinhasDeletadas = connection.Execute(sql, new { itemCestaId = itemCestaId });
             return quantidaDeLinhasDeletadas;
+        }
+
+        public int AtualizarStatusCesta(int cestaId, StatusCesta status)
+        {
+
+            string sql = @"update Cestas set Status = @status where CestaId = @cestaId";
+            var quantidaDeLinhasAtualizadas = connection.Execute(sql, new { status = status.ToString() ,cestaId = cestaId });
+            return quantidaDeLinhasAtualizadas;
         }
     }
 }

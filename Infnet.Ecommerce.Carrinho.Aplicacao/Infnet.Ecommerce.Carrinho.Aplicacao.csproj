@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Cesta\Profiles\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Infnet.Ecommerce.Carrinho.Dominio\Infnet.Ecommerce.Carrinho.Dominio.csproj" />
   </ItemGroup>
 
