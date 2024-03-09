@@ -1,5 +1,6 @@
 
 using Infnet.Ecommerce.Pagamento.API.Jobs;
+using Infnet.Ecommerce.Pagamento.Dominio.Repositorios;
 using Infnet.Ecommerce.Pagamento.Infra.Contexto;
 
 namespace Infnet.Ecommerce.Pagamento.API
@@ -24,6 +25,8 @@ namespace Infnet.Ecommerce.Pagamento.API
             builder.Services.AddScoped<IUsuarioRespositorio, Infra.Repositorios.UsuarioRepositorio>();
             builder.Services.AddScoped<IUsuarioServico, UsuarioServico>();
             builder.Services.AddScoped<IUsuarioAppServico, Aplicacao.Usuario.UsuarioAppServico>(); */
+            builder.Services.AddScoped<IPagamentoRepositorio, Infra.Repositorios.PagamentoRepositorio>();
+            builder.Services.AddScoped<ICarrinhoRepositorio, Infra.Repositorios.CarrinhoRepositorio>();
 
             // https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-8.0&tabs=visual-studio
             builder.Services.AddHostedService<PagamentoBackground>();

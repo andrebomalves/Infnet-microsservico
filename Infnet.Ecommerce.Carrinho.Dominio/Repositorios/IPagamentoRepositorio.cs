@@ -1,14 +1,9 @@
-﻿using Infnet.Ecommerce.Carrinho.Dominio.Repositorios.Filtro;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Infnet.Ecommerce.Carrinho.Dominio.Repositorios.Messagem;
 
 namespace Infnet.Ecommerce.Carrinho.Dominio.Repositorios
 {
     public interface IPagamentoRepositorio
     {
-        void RegistrarPagamento(PagamentoFiltro pagamentoFiltro);
+        void RegistrarPagamento(PagamentoMensagem pagamentoFiltro);
     }
 }

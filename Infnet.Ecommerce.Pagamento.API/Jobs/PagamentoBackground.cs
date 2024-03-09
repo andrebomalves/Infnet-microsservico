@@ -1,58 +1,72 @@
-﻿
-using EasyNetQ;
+﻿using Infnet.Ecommerce.Pagamento.Dominio.Repositorios.Mensagem;
+using RabbitMQ.Client.Events;
+using RabbitMQ.Client;
+using System.Text;
+using System.Text.Json;
 using Infnet.Ecommerce.Pagamento.Dominio.Repositorios;
-using Infnet.Ecommerce.Pagamento.Dominio.Repositorios.Consulta;
 
 namespace Infnet.Ecommerce.Pagamento.API.Jobs
 {
     public class PagamentoBackground : BackgroundService
     {
         private readonly ILogger<PagamentoBackground> logger;
-        private readonly IPagamentoRepositorio pagamentoRepositorio;
-        private readonly ICarrinhoRepositorio carrinhoRepositorio;
-        private readonly IBus bus;
-        private readonly string nomeFila;
+        private readonly IServiceProvider provider;
 
-        public PagamentoBackground(ILogger<PagamentoBackground> logger, IPagamentoRepositorio pagamentoRepositorio, ICarrinhoRepositorio carrinhoRepositorio)
+        public PagamentoBackground(ILogger<PagamentoBackground> logger,  IServiceProvider serviceProvider)
         {
             this.logger = logger;
-            this.pagamentoRepositorio = pagamentoRepositorio;
-            this.carrinhoRepositorio = carrinhoRepositorio;
-            bus = RabbitHutch.CreateBus("host=localhost;port=5672;username=guest;password=guest;");
-            nomeFila = "Pagamento";
+            this.provider = serviceProvider;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
 
-
-            await bus.PubSub.SubscribeAsync<PagamentoConsulta>(nomeFila, async pagamentoRequest =>
+            var factory = new ConnectionFactory() { HostName = "localhost", Port = 5672, UserName = "guest", Password = "guest" };
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
             {
-                Dominio.Entidades.Pagamento pagamento = new Dominio.Entidades.Pagamento();
-                pagamento.CestaId = pagamentoRequest.CestaId;
-                pagamento.UsuarioId = pagamentoRequest.UsuarioId;
-                pagamento.ValorTotal = pagamentoRequest.ValorTotal;
-                pagamento.Parcelas = pagamentoRequest.Parcelas;
+                channel.QueueDeclare(queue: "ecommerce-pagamento",
+                                     durable: false,
+                                     exclusive: false,
+                                     autoDelete: false,
+                                     arguments: null);
 
-                pagamentoRepositorio.Salvar(pagamento);
-                carrinhoRepositorio.AtualizaStatus(pagamentoRequest.CestaId, "Fechada");
+                var consumer = new EventingBasicConsumer(channel);
+                consumer.Received += async (model, ea) =>
+                {
+                    var body = ea.Body.ToArray();
+                    var message = Encoding.UTF8.GetString(body);
+                    var pagamentoMensagem = JsonSerializer.Deserialize<PagamentoMensagem>(message);
 
-                Console.WriteLine($"Mensagem recebida.");
-                await Task.Yield();
-            });
+                    Console.WriteLine("Mensagem recebida: {0}", message);
 
-            stoppingToken.Register(() =>
-            {
-                bus.Dispose();
-            });
+                    Dominio.Entidades.Pagamento pagamento = new Dominio.Entidades.Pagamento();
+                    pagamento.CestaId = pagamentoMensagem.CestaId;
+                    pagamento.UsuarioId = pagamentoMensagem.UsuarioId;
+                    pagamento.ValorTotal = pagamentoMensagem.ValorTotal;
+                    pagamento.Parcelas = pagamentoMensagem.Parcelas;
+                    using (var scope = provider.CreateScope())
+                    {
+                        var pagamentoRepositorio = scope.ServiceProvider.GetRequiredService<IPagamentoRepositorio>();
+                        var carrinhoRepositorio = scope.ServiceProvider.GetRequiredService<ICarrinhoRepositorio>();
 
-            await Task.Delay(Timeout.Infinite, stoppingToken);
-        }
+                        pagamentoRepositorio.Salvar(pagamento);
+                        carrinhoRepositorio.AtualizaStatus(pagamentoMensagem.CestaId, "Fechada");
+                    }
 
-        public override void Dispose()
-        {
-            bus.Dispose();
-            base.Dispose();
+                    await Task.Yield();
+
+                };
+                channel.BasicConsume(queue: "ecommerce-pagamento",
+                                     autoAck: true,
+                                     consumer: consumer);
+
+                while (!stoppingToken.IsCancellationRequested)
+                {
+                    await Task.Delay(1000, stoppingToken);
+                }
+
+            }
         }
     }
 }

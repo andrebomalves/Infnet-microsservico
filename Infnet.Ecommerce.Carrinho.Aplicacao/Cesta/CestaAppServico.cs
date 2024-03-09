@@ -3,7 +3,7 @@ using Infnet.Ecommerce.Carrinho.Aplicacao.Cesta.DTO;
 using Infnet.Ecommerce.Carrinho.Aplicacao.Cesta.Interfaces;
 using Infnet.Ecommerce.Carrinho.Dominio.Entidades;
 using Infnet.Ecommerce.Carrinho.Dominio.Repositorios;
-using Infnet.Ecommerce.Carrinho.Dominio.Repositorios.Filtro;
+using Infnet.Ecommerce.Carrinho.Dominio.Repositorios.Messagem;
 using Infnet.Ecommerce.Carrinho.Dominio.Servicos.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
@@ -114,7 +114,7 @@ namespace Infnet.Ecommerce.Carrinho.Aplicacao.Cesta
                 if (cesta == null)
                     throw new Exception("Não foi possivel localizar a cesta informada.");
 
-                PagamentoFiltro pagamento = new PagamentoFiltro();
+                PagamentoMensagem pagamento = new PagamentoMensagem();
                 pagamento.CestaId = cesta.CestaId;
                 pagamento.UsuarioId = cesta.UsuarioId;
                 pagamento.MeioDePagamento = pagamentoRequest.MeioPagamento.ToString();

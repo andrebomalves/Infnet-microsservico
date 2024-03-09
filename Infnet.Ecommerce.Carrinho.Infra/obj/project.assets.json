@@ -1252,7 +1252,8 @@
       "EasyNetQ >= 7.8.0",
       "Infnet.Ecommerce.Carrinho.Dominio >= 1.0.0",
       "Microsoft.Data.Sqlite >= 8.0.2",
-      "Microsoft.Extensions.Http >= 8.0.0"
+      "Microsoft.Extensions.Http >= 8.0.0",
+      "RabbitMQ.Client >= 6.8.1"
     ]
   },
   "packageFolders": {
@@ -1275,7 +1276,6 @@
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1318,6 +1318,10 @@
           "Microsoft.Extensions.Http": {
             "target": "Package",
             "version": "[8.0.0, )"
+          },
+          "RabbitMQ.Client": {
+            "target": "Package",
+            "version": "[6.8.1, )"
           }
         },
         "imports": [

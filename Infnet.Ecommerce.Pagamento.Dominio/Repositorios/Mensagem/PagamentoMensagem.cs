@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infnet.Ecommerce.Carrinho.Dominio.Repositorios.Filtro
+namespace Infnet.Ecommerce.Pagamento.Dominio.Repositorios.Mensagem
 {
-    public class PagamentoFiltro
+    public class PagamentoMensagem
     {
         public int CestaId { get; set; }
         public string UsuarioId { get; set; }
