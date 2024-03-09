@@ -26,13 +26,14 @@ namespace Infnet.Ecommerce.Carrinho.API
 
             builder.Services.AddSingleton<IDataContext>(new DataContext(builder.Configuration.GetConnectionString("Default")));
 
-            builder.Services.AddSingleton<IBus>( RabbitHutch.CreateBus("host=localhost;port=5672;username=guest;password=guest;"));
+            //builder.Services.AddSingleton<IBus>( RabbitHutch.CreateBus("host=localhost;port=5672;username=guest;password=guest;"));
 
             builder.Services.AddAutoMapper(typeof(Infnet.Ecommerce.Carrinho.Aplicacao.Cesta.Profiles.ItemCestaProfile));
 
             builder.Services.AddScoped<ICestaRepositorio, Infra.Repositorios.CestaRepositorio>();
             builder.Services.AddScoped<IUsuarioRepositorio, Infra.Repositorios.UsuarioRepositorio>();
             builder.Services.AddScoped<IProdutoRepositorio, Infra.Repositorios.ProdutoRepositorio>();
+            builder.Services.AddScoped<IPagamentoRepositorio, Infra.Repositorios.PagamentoRepositorio>();
 
             builder.Services.AddScoped<ICestaServico, CestaServico>();
             builder.Services.AddScoped<ICestaAppServico, Aplicacao.Cesta.CestaAppServico>();

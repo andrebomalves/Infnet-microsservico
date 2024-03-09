@@ -24,10 +24,15 @@ namespace Infnet.Ecommerce.Pagamento.Infra.Contexto
 
             var sql = @"
             CREATE TABLE IF NOT EXISTS 
-            Usuarios (
-                UsuarioId TEXT NOT NULL PRIMARY KEY,
-                Nome TEXT,
-                Email TEXT
+            Pagamentos (
+                PagamentoId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+                CestaId INTEGER,
+                UsuarioId INTEGER,
+                MeioDePagamento TEXT,
+                Parcelas INTEGER,
+                ValorTotal REAL,
+                DataPagamento TEXT,
+                Status TEXT
                 );
             ";
             connection.Execute(sql);

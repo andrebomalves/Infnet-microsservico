@@ -1,5 +1,7 @@
-﻿using Infnet.Ecommerce.Carrinho.Dominio.Repositorios;
+﻿using EasyNetQ;
+using Infnet.Ecommerce.Carrinho.Dominio.Repositorios;
 using Infnet.Ecommerce.Carrinho.Dominio.Repositorios.Filtro;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +18,10 @@ namespace Infnet.Ecommerce.Carrinho.Infra.Repositorios
         }
         public void RegistrarPagamento(PagamentoFiltro pagamentoFiltro)
         {
-            throw new NotImplementedException();
+            using (var bus = RabbitHutch.CreateBus("host=localhost;port=5672;username=guest;password=guest;"))
+            {
+                bus.PubSub.Publish<PagamentoFiltro>(pagamentoFiltro);
+            }
         }
     }
 }

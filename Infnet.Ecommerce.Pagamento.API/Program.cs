@@ -26,9 +26,11 @@ namespace Infnet.Ecommerce.Pagamento.API
             builder.Services.AddScoped<IUsuarioAppServico, Aplicacao.Usuario.UsuarioAppServico>(); */
 
             // https://learn.microsoft.com/en-us/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-8.0&tabs=visual-studio
-            builder.Services.AddHostedService<TesteBackground>();
+            builder.Services.AddHostedService<PagamentoBackground>();
 
-
+            builder.Services.AddHttpClient("Carrinho", client => {
+                client.BaseAddress = new Uri(builder.Configuration.GetSection("API.Carrinho:BaseUrl").Value);
+            });
 
             var app = builder.Build();
 
